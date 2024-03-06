@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row mt-1 end-xs">
+        <div class="col-xs-12">
+            <input [(ngModel)] ="FilterText" (keyup)="FilterStudent()"
+            class="search-inputBox"
+            type="text" placeholder="Search Student">
+            <a routerLink="/students/add" color="primary"  mat-raised-button class="marleft">Add Student</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mat-elevation-z8 mt-1">
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <!-- <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container> -->
+      
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.Name}} </td> 
+        </ng-container> -->
+        
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td> <!-- Corrected to use element.Email -->
+        </ng-container>
+        
+        <ng-container matColumnDef="BirthDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> BirthDate </th>
+          <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td> <!-- Corrected to use element.BirthDate -->
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef >  </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a [routerLink]="['/students',element.id]">
+                    <mat-icon>edit</mat-icon>
+                </a>
+                 </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               aria-label="Select page">
+      </mat-paginator>
+
+</div>
+<!-- <div class="container mat-elevation-z8 mt-1">
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="Name">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Email">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+    </table>
+</div> -->
