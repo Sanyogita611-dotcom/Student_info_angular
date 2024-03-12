@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* .mat-mdc-input-element {
+    color: black;
+}
+.mat-mdc-form-field-infix input {
+    color: black;
+}
+.--mdc-outlined-text-field-input-text-color {
+    color: inherit; /* Make the text color inherit from parent } 
+
+.mat-form-field .--mdc-outlined-text-field-input-text-color {
+    color: black; /* or any other color you prefer 
+}*/

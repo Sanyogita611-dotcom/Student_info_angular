@@ -1,0 +1,113 @@
+
+<div class="container" >
+    <div class="row top-space">
+        <div class="col-xs-12 end-xs">
+            <a routerLink="/students" color="primary" mat-raised-button>
+                <mat-icon>chevron_left</mat-icon>Go Back
+            </a>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 2em;">
+        <h1>{{headerLabel}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" style="padding-left: 2em;">
+            <form #studentForm="ngForm">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input type="text" matInput [(ngModel)]="studentData.name" name="name" >
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="studentData.birthDate" name="birthDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput [(ngModel)]="studentData.email" name="email">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact</mat-label>
+                            <input type="text" matInput [(ngModel)]="studentData.contact" name="contact">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Gender</mat-label>
+                            <mat-select [(ngModel)]="studentData.genderId" name="gender">
+                                <mat-option *ngFor="let Gender of GendersList" [value]="Gender.id">
+                                    {{Gender.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Physical Address</mat-label>
+                           <textarea matInput [(ngModel)]="studentData.address.physicalAddress" name="physicalAddress"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Postal Address</mat-label>
+                           <textarea matInput [(ngModel)]="studentData.address.postalAddress" name="physicalAddress"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" *ngIf="isNew">
+                        <button mat-raised-button color="primary" (click)="AddStudent()">Add</button>
+                    </div>
+                    <div class="col-xs-12" *ngIf="!isNew">
+                        <button mat-raised-button color="primary" (click)="UpdateStudent()">Update</button>
+                        <button mat-raised-button color="primary" (click)="DeleteStudent()">Delete</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-xs-6">
+            <div class="row center-xs">
+                <div class="image-container">
+                    <img style="height: 100px;width: 100px;" [src]="ProfileDP" alt="Profile DP">
+                </div>
+            </div>
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <input hidden type="file" #profileUpload (change)="ImageUpload($event)" name="" id="">
+                    <button mat-raised-button color="primary" (click)="profileUpload.click()">
+                        Change Image
+                    </button>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
